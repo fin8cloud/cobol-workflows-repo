@@ -1,0 +1,32 @@
+name: Build COBOL Program
+
+on:
+  workflow_dispatch:
+    inputs:
+      program_name:
+        required: true
+        description: 'Name of the program to build'
+      program_version:
+        required: true
+        description: 'Version of the program'
+      copybook_tag:
+        required: true
+        description: 'Copybook tag to use for the build'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          repository: 'owner/cobol-application-repo'
+          ref: ${{ github.event.inputs.program_version }}
+
+      - name: Setup COBOL Environment
+        run: echo "Setting up COBOL environment..."
+
+      - name: Build Program
+        run: |
+          echo "Building program ${GITHUB_EVENT_PATH.inputs.program_name} with copybook tag ${GITHUB_EVENT_PATH.inputs.copybook_tag}"
+          # Add commands to perform the actual build here, using the specified program and copybook tag.
