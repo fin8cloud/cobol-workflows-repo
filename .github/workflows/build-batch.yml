@@ -1,7 +1,7 @@
 name: Build Batch Program Workflow
 
 on:
-  workflow_call:
+  workflow_dispatch:
     inputs:
       program_name:
         required: true
