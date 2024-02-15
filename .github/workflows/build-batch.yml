@@ -1,0 +1,26 @@
+name: Build Batch Program Workflow
+
+on:
+  workflow_call:
+    inputs:
+      program_name:
+        required: true
+        type: string
+      program_version:
+        required: true
+        type: string
+      copybook_tag:
+        required: true
+        type: string
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Build batch program
+      run: |
+        echo "Building batch program ${{ inputs.program_name }} with version ${{ inputs.program_version }} and copybook tag ${{ inputs.copybook_tag }}"
+        # Placeholder for actual build commands
